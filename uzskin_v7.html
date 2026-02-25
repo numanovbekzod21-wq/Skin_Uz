@@ -216,9 +216,22 @@ const getRandomItem=(items)=>{
   return{...items[0]};
 };
 
-const notifyAdmin=async(text)=>{
-  if(!BOT_TOKEN||BOT_TOKEN==="8739618187:AAEiINXgFjrnlF8rnLjC8DGJzTmZ6_gwQ74")return;
-  try{await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:"@"+ADMIN_USERNAME,text,parse_mode:"HTML"})});}catch(e){}
+const notifyAdmin = async (text) => {
+  if (!BOT_TOKEN || BOT_TOKEN === "8739618187:AAEiINXgFjrnlF8rnLjC8DGJzTmZ6_gwQ74") return;
+
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "@" + Numanov_001,
+        text,
+        parse_mode: "HTML"
+      })
+    });
+  } catch (e) {
+    console.error("Telegram send error:", e);
+  }
 };
 
 // ═══════════════════ CASES ═══════════════════
